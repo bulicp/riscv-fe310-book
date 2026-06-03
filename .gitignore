@@ -1,0 +1,13 @@
+# mdBook build output
+/book
+
+# Editor / OS noise
+.DS_Store
+*.swp
+*~
+
+# Toolchain build artifacts (if you build the code/ tree)
+*.o
+*.elf
+*.bin
+*.map

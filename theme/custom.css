@@ -1,0 +1,28 @@
+/* Center figures and add a light frame + caption styling */
+main img {
+    display: block;
+    margin: 1.2rem auto;
+    max-width: 100%;
+    border: 1px solid var(--quote-border, #d8d8d8);
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 6px;
+}
+
+/* Figure captions: write them as a blockquote right under the image,
+   or as an emphasised paragraph beginning with "Figure". */
+main p > em:first-child {
+    color: var(--fg);
+}
+
+.figcaption, p.caption {
+    text-align: center;
+    font-size: 0.9em;
+    opacity: 0.85;
+    margin-top: -0.4rem;
+}
+
+/* Slightly tighter register bit-field tables */
+table th, table td {
+    padding: 0.3em 0.6em;
+}

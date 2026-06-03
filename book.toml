@@ -1,0 +1,31 @@
+[book]
+title = "Bare-metal RISC-V on the SiFive FE310"
+description = "A hands-on guide to memory-mapped I/O, the UART, and interrupts on the SiFive FE310-G002 RISC-V SoC, with complete C and assembly source code."
+authors = ["Patricio Bulić"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "rust"
+preferred-dark-theme = "navy"
+smart-punctuation = true
+no-section-label = false
+git-repository-url = "https://github.com/bulicp/riscv-fe310-book"
+edit-url-template = "https://github.com/bulicp/riscv-fe310-book/edit/main/{path}"
+additional-css = ["theme/custom.css"]
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
+use-boolean-and = true
+
+[output.html.playground]
+editable = false
