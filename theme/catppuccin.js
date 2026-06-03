@@ -1,25 +1,33 @@
-/* Relabel the mdBook theme menu so it reads as Catppuccin flavours,
-   and hide the themes we don't style. Purely cosmetic. */
+/* Cosmetic: relabel the theme menu to Catppuccin flavours and hide the
+   redundant duplicates. Colour correctness does NOT depend on this file
+   (catppuccin.css recolours every theme); this only tidies the menu.
+   Robust against newer mdBook that builds the menu after load: it polls
+   briefly until the buttons exist. Result:  [Auto]  Latte  Mocha  */
 (function () {
+    var RENAME = { light: "Latte", coal: "Mocha" };
+    var HIDE = ["rust", "navy", "ayu"];
+
     function apply() {
-        var list = document.getElementById("theme-list");
-        if (!list) return;
-
-        var rename = { light: "Latte", coal: "Mocha" };
-        Object.keys(rename).forEach(function (id) {
-            var btn = document.getElementById(id);
-            if (btn) btn.textContent = rename[id];
+        var found = false;
+        Object.keys(RENAME).forEach(function (id) {
+            var b = document.getElementById(id);
+            if (b) { b.textContent = RENAME[id]; found = true; }
         });
-
-        ["rust", "navy", "ayu"].forEach(function (id) {
-            var btn = document.getElementById(id);
-            if (btn) {
-                var li = btn.closest ? btn.closest("li") : btn.parentElement;
+        HIDE.forEach(function (id) {
+            var b = document.getElementById(id);
+            if (b) {
+                var li = b.closest ? b.closest("li") : b.parentElement;
                 if (li) li.style.display = "none";
             }
         });
+        return found;
     }
 
-    if (document.readyState !== "loading") apply();
-    else document.addEventListener("DOMContentLoaded", apply);
+    if (!apply()) {
+        var tries = 0;
+        var timer = setInterval(function () {
+            if (apply() || ++tries > 40) clearInterval(timer);
+        }, 125);
+        document.addEventListener("DOMContentLoaded", apply);
+    }
 })();

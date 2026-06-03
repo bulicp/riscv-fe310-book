@@ -10,7 +10,7 @@ This book collects two closely related topics in bare-metal programming of the
 Both topics are taught the same way: a short tour of the hardware, the registers
 involved, and then *working* C and assembly code that runs on the real device.
 Every listing in these pages is taken from the companion source tree under
-[`code/`](https://github.com/USERNAME/riscv-fe310-book/tree/main/code), so what
+[`code/`](https://github.com/bulicp/riscv-fe310-book/tree/main/code), so what
 you read is exactly what you can build and flash. The
 [Source code map](./appendix-source.md) tells you which file backs which section.
 

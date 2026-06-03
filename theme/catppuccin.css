@@ -1,128 +1,129 @@
 /* =====================================================================
    Catppuccin for mdBook  —  self-contained, no preprocessor required.
-   Maps the built-in "Light" theme to Catppuccin Latte and the built-in
-   "Coal" theme to Catppuccin Mocha. Palette + syntax colours follow the
-   official Catppuccin style guide.
+   Recolours EVERY built-in theme so the look is Catppuccin regardless of
+   which theme is selected/remembered, and regardless of mdBook version:
+       light, rust            -> Catppuccin Latte (light)
+       coal, navy, ayu        -> Catppuccin Mocha (dark)
+   The mdBook-variable mappings use !important so they win even on newer
+   mdBook builds whose own theme CSS loads after this file.
    ===================================================================== */
 
-/* ---------- Catppuccin Latte (light) ---------- */
-html.light {
-    --ctp-rosewater: #dc8a78; --ctp-flamingo: #dd7878; --ctp-pink: #ea76cb;
-    --ctp-mauve: #8839ef;     --ctp-red: #d20f39;      --ctp-maroon: #e64553;
-    --ctp-peach: #fe640b;     --ctp-yellow: #df8e1d;   --ctp-green: #40a02b;
-    --ctp-teal: #179299;      --ctp-sky: #04a5e5;      --ctp-sapphire: #209fb5;
-    --ctp-blue: #1e66f5;      --ctp-lavender: #7287fd;
-    --ctp-text: #4c4f69;      --ctp-subtext1: #5c5f77; --ctp-subtext0: #6c6f85;
-    --ctp-overlay2: #7c7f93;  --ctp-overlay1: #8c8fa1; --ctp-overlay0: #9ca0b0;
-    --ctp-surface2: #acb0be;  --ctp-surface1: #bcc0cc; --ctp-surface0: #ccd0da;
-    --ctp-base: #eff1f5;      --ctp-mantle: #e6e9ef;   --ctp-crust: #dce0e8;
-    --ctp-mark: rgba(136, 57, 239, 0.20);
-    color-scheme: light;
+/* ---------- Catppuccin Latte palette (light-flavoured themes) ---------- */
+html.light, html.rust {
+    --ctp-rosewater:#dc8a78; --ctp-flamingo:#dd7878; --ctp-pink:#ea76cb;
+    --ctp-mauve:#8839ef; --ctp-red:#d20f39; --ctp-maroon:#e64553;
+    --ctp-peach:#fe640b; --ctp-yellow:#df8e1d; --ctp-green:#40a02b;
+    --ctp-teal:#179299; --ctp-sky:#04a5e5; --ctp-sapphire:#209fb5;
+    --ctp-blue:#1e66f5; --ctp-lavender:#7287fd;
+    --ctp-text:#4c4f69; --ctp-subtext1:#5c5f77; --ctp-subtext0:#6c6f85;
+    --ctp-overlay2:#7c7f93; --ctp-overlay1:#8c8fa1; --ctp-overlay0:#9ca0b0;
+    --ctp-surface2:#acb0be; --ctp-surface1:#bcc0cc; --ctp-surface0:#ccd0da;
+    --ctp-base:#eff1f5; --ctp-mantle:#e6e9ef; --ctp-crust:#dce0e8;
+    --ctp-mark:rgba(136,57,239,0.20);
 }
 
-/* ---------- Catppuccin Mocha (dark) ---------- */
-html.coal {
-    --ctp-rosewater: #f5e0dc; --ctp-flamingo: #f2cdcd; --ctp-pink: #f5c2e7;
-    --ctp-mauve: #cba6f7;     --ctp-red: #f38ba8;      --ctp-maroon: #eba0ac;
-    --ctp-peach: #fab387;     --ctp-yellow: #f9e2af;   --ctp-green: #a6e3a1;
-    --ctp-teal: #94e2d5;      --ctp-sky: #89dceb;      --ctp-sapphire: #74c7ec;
-    --ctp-blue: #89b4fa;      --ctp-lavender: #b4befe;
-    --ctp-text: #cdd6f4;      --ctp-subtext1: #bac2de; --ctp-subtext0: #a6adc8;
-    --ctp-overlay2: #9399b2;  --ctp-overlay1: #7f849c; --ctp-overlay0: #6c7086;
-    --ctp-surface2: #585b70;  --ctp-surface1: #45475a; --ctp-surface0: #313244;
-    --ctp-base: #1e1e2e;      --ctp-mantle: #181825;   --ctp-crust: #11111b;
-    --ctp-mark: rgba(203, 166, 247, 0.30);
-    color-scheme: dark;
+/* ---------- Catppuccin Mocha palette (dark-flavoured themes) ---------- */
+html.coal, html.navy, html.ayu {
+    --ctp-rosewater:#f5e0dc; --ctp-flamingo:#f2cdcd; --ctp-pink:#f5c2e7;
+    --ctp-mauve:#cba6f7; --ctp-red:#f38ba8; --ctp-maroon:#eba0ac;
+    --ctp-peach:#fab387; --ctp-yellow:#f9e2af; --ctp-green:#a6e3a1;
+    --ctp-teal:#94e2d5; --ctp-sky:#89dceb; --ctp-sapphire:#74c7ec;
+    --ctp-blue:#89b4fa; --ctp-lavender:#b4befe;
+    --ctp-text:#cdd6f4; --ctp-subtext1:#bac2de; --ctp-subtext0:#a6adc8;
+    --ctp-overlay2:#9399b2; --ctp-overlay1:#7f849c; --ctp-overlay0:#6c7086;
+    --ctp-surface2:#585b70; --ctp-surface1:#45475a; --ctp-surface0:#313244;
+    --ctp-base:#1e1e2e; --ctp-mantle:#181825; --ctp-crust:#11111b;
+    --ctp-mark:rgba(203,166,247,0.30);
 }
 
-/* ---------- Map mdBook variables onto the Catppuccin palette ---------- */
-html.light, html.coal {
-    --bg: var(--ctp-base);
-    --fg: var(--ctp-text);
+/* ---------- Map mdBook variables (forced) ---------- */
+html.light, html.rust, html.coal, html.navy, html.ayu {
+    --bg: var(--ctp-base) !important;
+    --fg: var(--ctp-text) !important;
 
-    --sidebar-bg: var(--ctp-mantle);
-    --sidebar-fg: var(--ctp-subtext1);
-    --sidebar-non-existant: var(--ctp-overlay0);
-    --sidebar-active: var(--ctp-mauve);
-    --sidebar-spacer: var(--ctp-surface0);
+    --sidebar-bg: var(--ctp-mantle) !important;
+    --sidebar-fg: var(--ctp-subtext1) !important;
+    --sidebar-non-existant: var(--ctp-overlay0) !important;
+    --sidebar-active: var(--ctp-mauve) !important;
+    --sidebar-spacer: var(--ctp-surface0) !important;
 
-    --scrollbar: var(--ctp-overlay0);
-    --icons: var(--ctp-subtext0);
-    --icons-hover: var(--ctp-text);
+    --scrollbar: var(--ctp-overlay0) !important;
+    --icons: var(--ctp-subtext0) !important;
+    --icons-hover: var(--ctp-text) !important;
 
-    --links: var(--ctp-mauve);
+    --links: var(--ctp-mauve) !important;
 
-    --inline-code-color: var(--ctp-maroon);
+    --inline-code-color: var(--ctp-maroon) !important;
 
-    --theme-popup-bg: var(--ctp-mantle);
-    --theme-popup-border: var(--ctp-surface0);
-    --theme-hover: var(--ctp-surface0);
+    --theme-popup-bg: var(--ctp-mantle) !important;
+    --theme-popup-border: var(--ctp-surface0) !important;
+    --theme-popup-fg: var(--ctp-text) !important;
+    --theme-hover: var(--ctp-surface0) !important;
 
-    --quote-bg: var(--ctp-mantle);
-    --quote-border: var(--ctp-surface1);
-    --warning-border: var(--ctp-peach);
+    --quote-bg: var(--ctp-mantle) !important;
+    --quote-border: var(--ctp-surface1) !important;
+    --warning-border: var(--ctp-peach) !important;
 
-    --table-border-color: var(--ctp-surface0);
-    --table-header-bg: var(--ctp-surface0);
-    --table-alternate-bg: var(--ctp-mantle);
+    --table-border-color: var(--ctp-surface0) !important;
+    --table-header-bg: var(--ctp-surface0) !important;
+    --table-alternate-bg: var(--ctp-mantle) !important;
 
-    --searchbar-border-color: var(--ctp-surface1);
-    --searchbar-bg: var(--ctp-mantle);
-    --searchbar-fg: var(--ctp-text);
-    --searchbar-shadow-color: var(--ctp-overlay0);
-    --searchresults-header-fg: var(--ctp-subtext0);
-    --searchresults-border-color: var(--ctp-surface0);
-    --searchresults-li-bg: var(--ctp-mantle);
-    --search-mark-bg: var(--ctp-mark);
+    --searchbar-border-color: var(--ctp-surface1) !important;
+    --searchbar-bg: var(--ctp-mantle) !important;
+    --searchbar-fg: var(--ctp-text) !important;
+    --searchbar-shadow-color: var(--ctp-overlay0) !important;
+    --searchresults-header-fg: var(--ctp-subtext0) !important;
+    --searchresults-border-color: var(--ctp-surface0) !important;
+    --searchresults-li-bg: var(--ctp-mantle) !important;
+    --search-mark-bg: var(--ctp-mark) !important;
 }
+html.light, html.rust { color-scheme: light; }
+html.coal, html.navy, html.ayu { color-scheme: dark; }
 
-/* Links: a touch lighter on hover */
-html.light a:hover, html.coal a:hover,
-html.light .content a:hover, html.coal .content a:hover { color: var(--ctp-lavender); }
+/* ---------- Direct overrides (belt-and-suspenders) ---------- */
+/* In case a theme paints backgrounds directly rather than via --bg. */
+html.light, html.rust { background-color: var(--ctp-base); color: var(--ctp-text); }
+html.coal,  html.navy, html.ayu { background-color: var(--ctp-base); color: var(--ctp-text); }
+html.light body, html.rust body,
+html.coal body, html.navy body, html.ayu body { background-color: var(--ctp-base) !important; color: var(--ctp-text) !important; }
+#sidebar, .sidebar { background-color: var(--ctp-mantle) !important; }
+#menu-bar, .menu-bar { background-color: var(--ctp-base) !important; }
 
-/* Active item in the sidebar */
-html.light .chapter li.chapter-item a.active,
-html.coal  .chapter li.chapter-item a.active { color: var(--ctp-mauve); font-weight: 600; }
+/* Links */
+.content a { color: var(--ctp-mauve); }
+.content a:hover { color: var(--ctp-lavender); }
+.chapter li.chapter-item a.active { color: var(--ctp-mauve); font-weight: 600; }
 
-/* Inline code: subtle surface chip */
-html.light :not(pre) > code, html.coal :not(pre) > code {
-    background-color: var(--ctp-surface0);
-    color: var(--ctp-maroon);
-    border-radius: 4px;
-    padding: 0.1em 0.35em;
+/* Inline code chip */
+:not(pre) > code {
+    background-color: var(--ctp-surface0) !important;
+    color: var(--ctp-maroon) !important;
+    border-radius: 4px; padding: 0.1em 0.35em;
 }
 
 /* ---------- Code blocks (Highlight.js) ---------- */
-html.light pre, html.coal pre,
-html.light pre > code.hljs, html.coal pre > code.hljs,
-html.light .hljs, html.coal .hljs {
-    background: var(--ctp-mantle);
-    color: var(--ctp-text);
+pre, pre > code, pre > code.hljs, .hljs {
+    background: var(--ctp-mantle) !important;
+    color: var(--ctp-text) !important;
 }
-html.light pre > code, html.coal pre > code { background: transparent; }
+pre > code { background: transparent !important; }
 
-.hljs-comment, .hljs-quote { color: var(--ctp-overlay1); font-style: italic; }
-.hljs-keyword, .hljs-selector-tag, .hljs-literal,
-.hljs-meta .hljs-keyword { color: var(--ctp-mauve); }
-.hljs-built_in, .hljs-builtin-name { color: var(--ctp-red); }
-.hljs-type, .hljs-class .hljs-title, .hljs-title.class_ { color: var(--ctp-yellow); }
-.hljs-title, .hljs-title.function_,
-.hljs-function .hljs-title, .hljs-section { color: var(--ctp-blue); }
-.hljs-name { color: var(--ctp-blue); }
-.hljs-string, .hljs-meta .hljs-string, .hljs-regexp { color: var(--ctp-green); }
-.hljs-number { color: var(--ctp-peach); }
-.hljs-symbol, .hljs-bullet, .hljs-link { color: var(--ctp-teal); }
-.hljs-variable, .hljs-template-variable, .hljs-params { color: var(--ctp-maroon); }
-.hljs-attr, .hljs-attribute { color: var(--ctp-yellow); }
-.hljs-meta { color: var(--ctp-peach); }            /* C preprocessor */
-.hljs-selector-id { color: var(--ctp-blue); }
-.hljs-selector-class { color: var(--ctp-yellow); }
-.hljs-tag { color: var(--ctp-subtext0); }
-.hljs-deletion { color: var(--ctp-red); }
-.hljs-addition { color: var(--ctp-green); }
+.hljs-comment, .hljs-quote { color: var(--ctp-overlay1) !important; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-meta .hljs-keyword { color: var(--ctp-mauve) !important; }
+.hljs-built_in, .hljs-builtin-name { color: var(--ctp-red) !important; }
+.hljs-type, .hljs-class .hljs-title, .hljs-title.class_ { color: var(--ctp-yellow) !important; }
+.hljs-title, .hljs-title.function_, .hljs-function .hljs-title, .hljs-section { color: var(--ctp-blue) !important; }
+.hljs-name { color: var(--ctp-blue) !important; }
+.hljs-string, .hljs-meta .hljs-string, .hljs-regexp { color: var(--ctp-green) !important; }
+.hljs-number { color: var(--ctp-peach) !important; }
+.hljs-symbol, .hljs-bullet, .hljs-link { color: var(--ctp-teal) !important; }
+.hljs-variable, .hljs-template-variable, .hljs-params { color: var(--ctp-maroon) !important; }
+.hljs-attr, .hljs-attribute { color: var(--ctp-yellow) !important; }
+.hljs-meta { color: var(--ctp-peach) !important; }
+.hljs-selector-id { color: var(--ctp-blue) !important; }
+.hljs-selector-class { color: var(--ctp-yellow) !important; }
+.hljs-tag { color: var(--ctp-subtext0) !important; }
+.hljs-deletion { color: var(--ctp-red) !important; }
+.hljs-addition { color: var(--ctp-green) !important; }
 .hljs-emphasis { font-style: italic; }
 .hljs-strong { font-weight: 700; }
-
-/* Menu bar / top buttons share the surface tint */
-html.light #menu-bar, html.coal #menu-bar,
-html.light #menu-bar .icon-button, html.coal #menu-bar .icon-button { color: var(--ctp-subtext0); }

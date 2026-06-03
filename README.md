@@ -44,6 +44,16 @@ machine timer interrupt.
 The [Source code map](src/appendix-source.md) links every source file to the
 section that discusses it.
 
+## Theme
+
+The book ships with a self-contained [Catppuccin](https://catppuccin.com/) theme
+(no preprocessor needed): the light flavour is **Latte**, the dark flavour is
+**Mocha**, selectable from the paintbrush menu in the top bar. The mapping lives
+in `theme/catppuccin.css` (palette + syntax colours) and `theme/catppuccin.js`
+(menu labels); tweak the hex values there to taste. To go back to the stock
+mdBook themes, remove those two files from the `additional-css`/`additional-js`
+lists in `book.toml`.
+
 ## Building locally
 
 ```bash
@@ -66,7 +76,7 @@ mdbook build
    [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds the book
    and deploys it automatically.
 
-Then replace every `USERNAME` placeholder (in this file, in `book.toml`, and in
+Then replace every `bulicp` placeholder (in this file, in `book.toml`, and in
 the cross-links inside `src/`) with your GitHub username.
 
 ## Attribution & licence
