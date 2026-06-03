@@ -1,11 +1,11 @@
-/* Cosmetic: relabel the theme menu to Catppuccin flavours and hide the
-   redundant duplicates. Colour correctness does NOT depend on this file
-   (catppuccin.css recolours every theme); this only tidies the menu.
-   Robust against newer mdBook that builds the menu after load: it polls
-   briefly until the buttons exist. Result:  [Auto]  Latte  Mocha  */
+/* Cosmetic only (mdBook 0.5.x): rename theme menu entries to Catppuccin
+   flavours and hide the redundant duplicates. Colour correctness comes
+   entirely from theme/css/variables.css + the highlight overrides, so even
+   if this script does nothing the colours are already correct.
+   Menu after this runs:  Auto  Latte  Mocha  */
 (function () {
-    var RENAME = { light: "Latte", coal: "Mocha" };
-    var HIDE = ["rust", "navy", "ayu"];
+    var RENAME = { "mdbook-theme-light": "Latte", "mdbook-theme-coal": "Mocha" };
+    var HIDE = ["mdbook-theme-rust", "mdbook-theme-navy", "mdbook-theme-ayu"];
 
     function apply() {
         var found = false;
@@ -22,11 +22,9 @@
         });
         return found;
     }
-
     if (!apply()) {
-        var tries = 0;
-        var timer = setInterval(function () {
-            if (apply() || ++tries > 40) clearInterval(timer);
+        var n = 0, t = setInterval(function () {
+            if (apply() || ++n > 40) clearInterval(t);
         }, 125);
         document.addEventListener("DOMContentLoaded", apply);
     }

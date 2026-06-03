@@ -1,0 +1,22 @@
+/* Catppuccin Latte — overrides mdBook's built-in highlight.css (used by light, rust). */
+.hljs { background: #e6e9ef; color: #4c4f69; }
+pre, pre > code, pre > code.hljs { background: #e6e9ef; }
+pre > code { background: transparent; }
+.hljs-comment, .hljs-quote { color: #8c8fa1; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-meta .hljs-keyword { color: #8839ef; }
+.hljs-built_in, .hljs-builtin-name { color: #d20f39; }
+.hljs-type, .hljs-class .hljs-title, .hljs-title.class_ { color: #df8e1d; }
+.hljs-title, .hljs-title.function_, .hljs-function .hljs-title, .hljs-section, .hljs-name { color: #1e66f5; }
+.hljs-string, .hljs-regexp, .hljs-meta .hljs-string { color: #40a02b; }
+.hljs-number { color: #fe640b; }
+.hljs-symbol, .hljs-bullet, .hljs-link { color: #179299; }
+.hljs-variable, .hljs-template-variable, .hljs-params { color: #e64553; }
+.hljs-attr, .hljs-attribute { color: #df8e1d; }
+.hljs-meta { color: #fe640b; }
+.hljs-selector-id { color: #1e66f5; }
+.hljs-selector-class { color: #df8e1d; }
+.hljs-tag { color: #6c6f85; }
+.hljs-deletion { color: #d20f39; }
+.hljs-addition { color: #40a02b; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
