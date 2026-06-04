@@ -14,6 +14,26 @@ Every listing in these pages is taken from the companion source tree under
 you read is exactly what you can build and flash. The
 [Source code map](./appendix-source.md) tells you which file backs which section.
 
+## About this workshop and the competence center
+
+This book accompanies the *Bare-metal RISC-V on the SiFive FE310* workshop run
+within **CC Chip.si**, the Slovenian Competence Center on Chips and Semiconductor
+Technologies. CC Chip.si is a consortium of six Slovenian institutions,
+coordinated by the Faculty of Electrical Engineering, University of Ljubljana. It
+is one of around 30 Chips Competence Centers established across the EU under the
+Chips for Europe initiative of the European Chips Act, with skills development and
+education among its core activities. You can read more at
+[cc-chip.si](https://cc-chip.si/about/).
+
+## About the author
+
+The material is written by **Prof. Dr. Patricio Bulić**, Full Professor at the
+Faculty of Computer and Information Science, University of Ljubljana, where he
+teaches Computer Architecture, Computer Systems Organization, and Embedded
+Systems. He is the author of the Springer textbook *Understanding Computer
+Organization* and co-author of *Introduction to Parallel Computing*; this book's
+chapters are adapted from the former.
+
 ## The target hardware
 
 The FE310-G002 is built around SiFive's **E31** core, a 32-bit RV32IMAC
@@ -49,7 +69,7 @@ enable_global_interrupts:
 Register diagrams are drawn either as figures or as **bit-field tables**, where
 the most-significant bit is on the left.
 
-## Building this book
+<!---## Building this book
 
 The book is written for [mdBook](https://rust-lang.github.io/mdBook/). To preview
 it locally:
@@ -61,7 +81,7 @@ mdbook build                # static site in ./book
 ```
 
 Pushing to the `main` branch publishes the site to GitHub Pages automatically
-through the workflow in `.github/workflows/deploy.yml`.
+through the workflow in `.github/workflows/deploy.yml`. --->
 
 > **Attribution.** The text is adapted from the *Memory-mapped Input/Output* and
 > *Interrupts and interrupt handling* chapters of Patricio Bulić's
